@@ -22,5 +22,25 @@
 
 		<div class="admin-nav mb-30">
 			<a href="index.php" class="admin-nav__link">Все фильмы</a>
+			
+		<?php if ( isAdmin() ) { ?>
 			<a href="new.php" class="admin-nav__link">Добавить новый фильм</a>
+			<a href="request.php" class="admin-nav__link">Указать информацию</a>
+			<a href="logout.php" class="admin-nav__link">Выйти</a>
+		<?php	} else { ?>
+			<a href="login.php" class="admin-nav__link">Вход для администратора</a>
+		<?php } ?>	
+			
 		</div>
+
+		<?php if (isset($_COOKIE['user-name'])) { ?>
+		<div class="mb-30">
+			<?php if ( isset($_COOKIE['user-city'])) { ?>
+				Привет, <?=$_COOKIE['user-name']?>! Как погода в <?=$_COOKIE['user-city']?> ?
+			<?php } else { ?>
+			Привет, <?=$_COOKIE['user-name']?>!
+			<?php } ?>
+
+		</div>	
+		<?php }?>
+
